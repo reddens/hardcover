@@ -38,7 +38,7 @@
 
 <div class="container mx-auto px-4 py-8">
     
-    <h1 style="font-size:2.5rem;font-weight:bold;margin-bottom:2rem;">🛒 Shopping Cart</h1>
+    <h1 style="font-size:2.5rem;font-weight:700;margin-bottom:2rem;color:#111827;">Shopping Cart</h1>
 
     @if(session('success'))
     <div style="background:#d1fae5;border:1px solid #34d399;color:#065f46;padding:1rem;border-radius:0.5rem;margin-bottom:1.5rem;">
@@ -69,20 +69,20 @@
                              style="width:100px;height:130px;object-fit:cover;border-radius:0.5rem;">
                         @else
                         <div style="width:100px;height:130px;background:linear-gradient(135deg, #f97316 0%, #ec4899 100%);border-radius:0.5rem;display:flex;align-items:center;justify-content:center;">
-                            <span style="font-size:2rem;color:white;">📖</span>
+                            <span style="font-size:1.5rem;color:white;font-weight:700;">BOOK</span>
                         </div>
                         @endif
                     </div>
 
                     <!-- Book Info -->
                     <div>
-                        <h3 style="font-weight:bold;font-size:1.125rem;margin-bottom:0.25rem;">
-                            <a href="{{ route('book.show', $item->book->slug) }}" style="color:#111827;" class="hover:text-orange-500">
+                        <h3 style="font-weight:700;font-size:1.125rem;margin-bottom:0.25rem;">
+                            <a href="{{ route('book.show', $item->book->slug) }}" style="color:#111827;text-decoration:none;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#111827'">
                                 {{ $item->book->title }}
                             </a>
                         </h3>
                         <p style="color:#6b7280;font-size:0.875rem;">by {{ $item->book->author->name }}</p>
-                        <p style="color:#f97316;font-weight:bold;margin-top:0.5rem;">${{ number_format($item->book->price, 2) }}</p>
+                        <p style="color:#f97316;font-weight:700;margin-top:0.5rem;">${{ number_format($item->book->price, 2) }}</p>
                     </div>
 
                     <!-- Quantity Controls -->
@@ -97,7 +97,7 @@
                                    max="{{ $item->book->stock }}" 
                                    style="width:60px;padding:0.5rem;border:1px solid #d1d5db;border-radius:0.375rem;text-align:center;">
                             <button type="submit" 
-                                    style="background:#f97316;color:white;padding:0.5rem 0.75rem;border-radius:0.375rem;font-size:0.875rem;border:none;cursor:pointer;">
+                                    style="background:#f97316;color:white;padding:0.5rem 0.75rem;border-radius:0.375rem;font-size:0.875rem;border:none;cursor:pointer;font-weight:600;transition:background 0.3s;" onmouseover="this.style.background='#ea580c'" onmouseout="this.style.background='#f97316'">
                                 Update
                             </button>
                         </form>
@@ -105,7 +105,7 @@
 
                     <!-- Subtotal -->
                     <div style="text-align:right;">
-                        <p style="font-weight:bold;font-size:1.125rem;">${{ number_format($item->book->price * $item->quantity, 2) }}</p>
+                        <p style="font-weight:700;font-size:1.125rem;color:#111827;">${{ number_format($item->book->price * $item->quantity, 2) }}</p>
                     </div>
 
                     <!-- Remove Button -->
@@ -114,7 +114,7 @@
                             @csrf
                             @method('DELETE')
                             <button type="submit" 
-                                    style="color:#dc2626;background:transparent;border:none;cursor:pointer;font-size:1.5rem;"
+                                    style="color:#dc2626;background:transparent;border:none;cursor:pointer;font-size:1.5rem;font-weight:700;"
                                     onclick="return confirm('Remove this item from cart?')">
                                 ×
                             </button>
@@ -129,7 +129,7 @@
                     <form action="{{ route('cart.clear') }}" method="POST" onsubmit="return confirm('Clear entire cart?')">
                         @csrf
                         @method('DELETE')
-                        <button type="submit" style="color:#dc2626;background:transparent;border:none;font-size:0.875rem;cursor:pointer;">
+                        <button type="submit" style="color:#dc2626;background:transparent;border:none;font-size:0.875rem;cursor:pointer;font-weight:600;">
                             Clear Cart
                         </button>
                     </form>
@@ -140,34 +140,34 @@
         <!-- Right: Order Summary -->
         <div>
             <div style="background:white;border-radius:0.75rem;box-shadow:0 1px 3px rgba(0,0,0,0.1);padding:1.5rem;position:sticky;top:100px;">
-                <h2 style="font-size:1.5rem;font-weight:bold;margin-bottom:1.5rem;">Order Summary</h2>
+                <h2 style="font-size:1.5rem;font-weight:700;margin-bottom:1.5rem;color:#111827;">Order Summary</h2>
 
                 <div style="margin-bottom:1.5rem;">
                     <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
                         <span style="color:#6b7280;">Subtotal:</span>
-                        <span style="font-weight:600;">${{ number_format($subtotal, 2) }}</span>
+                        <span style="font-weight:600;color:#111827;">${{ number_format($subtotal, 2) }}</span>
                     </div>
                     <div style="display:flex;justify-content:space-between;margin-bottom:0.75rem;">
                         <span style="color:#6b7280;">Tax (10%):</span>
-                        <span style="font-weight:600;">${{ number_format($tax, 2) }}</span>
+                        <span style="font-weight:600;color:#111827;">${{ number_format($tax, 2) }}</span>
                     </div>
                     <div style="border-top:2px solid #e5e7eb;padding-top:0.75rem;display:flex;justify-content:space-between;margin-top:1rem;">
-                        <span style="font-size:1.25rem;font-weight:bold;">Total:</span>
-                        <span style="font-size:1.25rem;font-weight:bold;color:#f97316;">${{ number_format($total, 2) }}</span>
+                        <span style="font-size:1.25rem;font-weight:700;color:#111827;">Total:</span>
+                        <span style="font-size:1.25rem;font-weight:700;color:#f97316;">${{ number_format($total, 2) }}</span>
                     </div>
                 </div>
 
                 @auth
-                <a href="{{ route('checkout') }}" class="btn-primary" style="display:block;text-align:center;padding:1rem;margin-bottom:0.75rem;">
+                <a href="{{ route('checkout') }}" class="btn-primary" style="display:block;text-align:center;padding:1rem;margin-bottom:0.75rem;text-decoration:none;">
                     Proceed to Checkout
                 </a>
                 @else
-                <a href="{{ route('login') }}" class="btn-primary" style="display:block;text-align:center;padding:1rem;margin-bottom:0.75rem;">
+                <a href="{{ route('login') }}" class="btn-primary" style="display:block;text-align:center;padding:1rem;margin-bottom:0.75rem;text-decoration:none;">
                     Login to Checkout
                 </a>
                 @endauth
 
-                <a href="{{ route('shop') }}" class="btn-secondary" style="display:block;text-align:center;padding:1rem;">
+                <a href="{{ route('shop') }}" class="btn-secondary" style="display:block;text-align:center;padding:1rem;text-decoration:none;">
                     Continue Shopping
                 </a>
             </div>
@@ -176,10 +176,10 @@
     @else
     <!-- Empty Cart -->
     <div style="background:#f9fafb;border-radius:0.75rem;padding:4rem;text-align:center;">
-        <div style="font-size:6rem;margin-bottom:1rem;">🛒</div>
-        <h2 style="font-size:2rem;font-weight:bold;margin-bottom:0.5rem;">Your cart is empty</h2>
-        <p style="color:#6b7280;margin-bottom:2rem;">Add some books to get started!</p>
-        <a href="{{ route('shop') }}" class="btn-primary" style="display:inline-block;">
+        <div style="font-size:4rem;margin-bottom:1rem;color:#9ca3af;font-weight:700;">CART</div>
+        <h2 style="font-size:2rem;font-weight:700;margin-bottom:0.5rem;color:#111827;">Your cart is empty</h2>
+        <p style="color:#6b7280;margin-bottom:2rem;font-size:1.125rem;">Add some books to get started</p>
+        <a href="{{ route('shop') }}" class="btn-primary" style="text-decoration:none;">
             Browse Books
         </a>
     </div>

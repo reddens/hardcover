@@ -9,6 +9,8 @@
     <!-- Fonts -->
     <link rel="preconnect" href="https://fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=inter:400,500,600,700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css">
+    <link rel="icon" type="image/png" href="/favicon.png">
     
     <!-- Scripts -->
     @vite(['resources/css/app.css', 'resources/js/app.js'])
@@ -27,8 +29,19 @@
         body {
             font-family: 'Inter', sans-serif;
             color: var(--black);
+            background-color: #f9fafb;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
         
+        main {
+            flex: 1;
+        }
+
+        .med-container{width:95%;margin:auto;}
+        
+        /* Button Styles */
         .btn-primary {
             background-color: var(--primary-orange);
             color: var(--white);
@@ -49,23 +62,49 @@
         }
         
         .btn-secondary {
-            background-color: var(--black);
-            color: var(--white);
+            background-color: var(--white);
+            color: #374151;
             padding: 0.75rem 1.5rem;
             border-radius: 0.5rem;
             font-weight: 600;
-            transition: all 0.3s ease;
+            border: 2px solid #e5e7eb;
+            cursor: pointer;
+            transition: all 0.3s;
             display: inline-block;
             text-decoration: none;
-            border: none;
-            cursor: pointer;
         }
         
+        .bg-white{background:white;}
+
+        .bg-grey{background:var(--gray);}
+
         .btn-secondary:hover {
-            background-color: #2A2A2A;
-            transform: translateY(-2px);
+            border-color: var(--primary-orange);
+            color: var(--primary-orange);
         }
         
+        #books-glide{background:white;}
+
+        /* Orange Subheader */
+        .top-bar {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--dark-orange) 100%);
+            padding: 0.5rem 0;
+        }
+        
+        .top-bar-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+            color: var(--white);
+        }
+        
+        .top-bar-left {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        /* Main Header */
         .header {
             background-color: var(--black);
             color: var(--white);
@@ -76,30 +115,61 @@
             box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
         }
         
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo-link {
+            display: inline-block;
+            transition: opacity 0.3s;
+        }
+        
+        .logo-link:hover {
+            opacity: 0.8;
+        }
+        
+        .main-nav {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        /* Navigation Link Styles with Underline */
         .nav-link {
             color: var(--white);
             text-decoration: none;
             padding: 0.5rem 1rem;
-            border-radius: 0.5rem;
             transition: all 0.3s ease;
             font-weight: 500;
+            border-bottom: 2px solid transparent;
+            background: transparent;
+            cursor: pointer;
         }
         
         .nav-link:hover {
-            background-color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
         }
         
         .nav-link.active {
-            background-color: var(--primary-orange);
+            border-bottom-color: var(--primary-orange);
         }
         
-        .footer {
-            background-color: var(--black);
-            color: var(--white);
-            padding: 3rem 0 1rem;
-            margin-top: 4rem;
+        /* Cart Badge */
+        .cart-badge {
+            position: absolute;
+            top: -8px;
+            right: -12px;
+            background: #ef4444;
+            color: white;
+            font-size: 0.75rem;
+            padding: 0.125rem 0.375rem;
+            border-radius: 9999px;
+            font-weight: 600;
         }
         
+        /* Book Card Styles */
         .book-card {
             background-color: var(--white);
             border-radius: 0.75rem;
@@ -155,6 +225,7 @@
             margin-top: auto;
         }
         
+        /* Banner Styles */
         .banner-slider {
             position: relative;
             overflow: hidden;
@@ -191,6 +262,7 @@
             margin-bottom: 2rem;
         }
         
+        /* Section Title */
         .section-title {
             font-size: 2.5rem;
             font-weight: 700;
@@ -200,9 +272,16 @@
             padding-bottom: 1rem;
         }
 
-        .title-container{padding-left:3rem;}
+        .title-container {
+            padding-left: 3rem;
+        }
 
-        .featured-books{margin-top:2.5rem;margin-bottom:3rem;}
+        .px-3rem{padding-top:3rem;padding-bottom:3rem;}
+
+        .featured-books {
+            margin-top: 2.5rem;
+            margin-bottom: 3rem;
+        }
         
         .section-title::after {
             content: '';
@@ -214,18 +293,18 @@
             background-color: var(--primary-orange);
         }
         
+        /* Text Block */
         .text-block {
             background-color: var(--gray);
             padding: 3rem;
             border-radius: 1rem;
-            margin-bottom: 3rem;
         }
         
+        /* Contact Form */
         .contact-form {
-            background-color: var(--white);
+            background-color: var(--gray); 
             padding-left: 3rem;
             padding-right: 3rem;
-            border-radius: 1rem;
             margin-top: 1.25rem;
         }
         
@@ -239,6 +318,16 @@
         @media (max-width: 768px) {
             .form-grid-3 {
                 grid-template-columns: 1fr;
+            }
+            
+            .top-bar-content {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+            
+            .top-bar-left {
+                flex-direction: column;
+                gap: 0.5rem;
             }
         }
         
@@ -305,6 +394,67 @@
             transform: scale(1.1);
         }
         
+        /* User Profile Dropdown */
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 1rem;
+            border-radius: 0.5rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .user-profile:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+
+        .user-profile-dropdown {
+            display: none;
+            position: absolute;
+            top: 100%;
+            right: 0;
+            background-color: var(--white);
+            color: var(--black);
+            border-radius: 0.5rem;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.15);
+            min-width: 200px;
+            z-index: 1001;
+            margin-top: 0.5rem;
+        }
+
+        .user-profile.active .user-profile-dropdown {
+            display: block;
+        }
+
+        .user-profile-dropdown a,
+        .user-profile-dropdown button {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 0.75rem 1rem;
+            border: none;
+            background: none;
+            color: var(--black);
+            text-decoration: none;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+        }
+
+        .user-profile-dropdown a:hover,
+        .user-profile-dropdown button:hover {
+            background-color: var(--gray);
+        }
+
+        .user-email {
+            font-size: 0.85rem;
+            color: #d1d5db;
+            white-space: nowrap;
+        }
+
+        /* Alert Styles */
         .alert {
             padding: 1rem;
             border-radius: 0.5rem;
@@ -317,6 +467,7 @@
             border: 1px solid #C3E6CB;
         }
         
+        /* Pagination */
         .pagination {
             display: flex;
             justify-content: center;
@@ -345,60 +496,171 @@
             color: var(--white);
             border-color: var(--primary-orange);
         }
+        
+        /* Footer Styles */
+        .footer {
+            background-color: #1f2937;
+            color: white;
+        }
+        
+        .footer-main {
+            padding: 3rem 0;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 3rem;
+        }
+        
+        @media (max-width: 768px) {
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
+            }
+        }
+        
+        .footer-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-orange);
+        }
+        
+        .footer-text {
+            color: #d1d5db;
+            line-height: 1.6;
+            font-size: 0.875rem;
+        }
+        
+        .footer-link {
+            color: #d1d5db;
+            text-decoration: none;
+            font-size: 0.875rem;
+            transition: color 0.3s;
+            display: block;
+            margin-bottom: 0.5rem;
+        }
+        
+        .footer-link:hover {
+            color: var(--primary-orange);
+        }
+        
+        .footer-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        /* Orange Subfooter */
+        .subfooter {
+            background: linear-gradient(135deg, var(--primary-orange) 0%, var(--dark-orange) 100%);
+            padding: 1rem 0;
+        }
+        
+        .subfooter-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-size: 0.875rem;
+        }
+        
+        .subfooter-links {
+            display: flex;
+            gap: 1.5rem;
+        }
+        
+        .subfooter-link {
+            color: white;
+            text-decoration: none;
+            transition: opacity 0.3s;
+        }
+        
+        .subfooter-link:hover {
+            opacity: 0.7;
+        }
+        
+        @media (max-width: 768px) {
+            .subfooter-content {
+                flex-direction: column;
+                gap: 1rem;
+                text-align: center;
+            }
+            
+            .subfooter-links {
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+        }
     </style>
     
     @stack('styles')
 </head>
 <body class="antialiased">
-    <!-- Header -->
+    
+    <!-- Orange Top Bar -->
+    <div class="top-bar">
+        <div class="med-container mx-auto px-4">
+            <div class="top-bar-content">
+                <div class="top-bar-left">
+                    <span><a href="mailto:info@hardcover.com"><i class="bi bi-envelope-fill"></i> info@hardcover.com</a></span>
+                    <span><i class="bi bi-telephone-fill"></i> +1 (555) 123-4567</span>
+                </div>
+                <div>
+                    <span>Free shipping on orders over £50</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Header -->
     <header class="header">
-        <div class="container mx-auto px-4">
-            <div class="flex justify-between items-center">
-                <div class="text-2xl font-bold">
-                    <a href="{{ route('home') }}" class="text-white hover:text-orange-500 transition-colors" style="text-decoration: none;">
-                        📚 {{ config('app.name', 'Bookstore') }}
+        <div class="med-container mx-auto px-4">
+            <div class="header-content">
+                <div>
+                    <a href="{{ route('home') }}" class="logo-link">
+                        <img width="60px" src="{{ asset('images/logo.png') }}" alt="{{ config('app.name', 'Bookstore') }}">
                     </a>
                 </div>
                 
-                <nav class="hidden md:flex items-center space-x-2">
+                <nav class="main-nav">
                     <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
                     <a href="{{ route('shop') }}" class="nav-link {{ request()->routeIs('shop') ? 'active' : '' }}">Shop</a>
-                    
+                    <a href="{{ route('cart.index') }}" class="nav-link {{ request()->routeIs('cart.*') ? 'active' : '' }}" style="position: relative;">
+                        Cart
+                        @php
+                            // Safe cart count calculation
+                            $cartCount = 0;
+                            if (auth()->check()) {
+                                // For logged-in users, count cart items from database
+                                $cartCount = \App\Models\CartItem::where('user_id', auth()->id())->sum('quantity');
+                            } else {
+                                // For guests, count from session
+                                $sessionCart = session()->get('cart', []);
+                                if (is_array($sessionCart)) {
+                                    $cartCount = array_sum(array_column($sessionCart, 'quantity'));
+                                }
+                            }
+                        @endphp
+                        @if($cartCount > 0)
+                        <span class="cart-badge">{{ $cartCount }}</span>
+                        @endif
+                    </a>
+             
                     @auth
-                        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
-                        <form method="POST" action="{{ route('logout') }}" class="inline">
-                            @csrf
-                            <button type="submit" class="nav-link">Logout</button>
-                        </form>
+                        <div class="user-profile" onclick="this.classList.toggle('active')">
+                            <i class="bi bi-person-circle" style="font-size: 1.5rem;"></i>
+                            <span class="user-email">{{ auth()->user()->email }}</span>
+                            <div class="user-profile-dropdown">
+                                <form method="POST" action="{{ route('logout') }}" style="display: contents;">
+                                    @csrf
+                                    <button type="submit"><i class="bi bi-box-arrow-right"></i> Logout</button>
+                                </form>
+                            </div>
+                        </div>
                     @else
                         <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Login</a>
-                        <a href="{{ route('register') }}" class="btn-primary ml-2">Register</a>
-                    @endauth
-                </nav>
-                
-                <!-- Mobile Menu Button -->
-                <button class="md:hidden text-white" onclick="toggleMobileMenu()">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
-                    </svg>
-                </button>
-            </div>
-            
-            <!-- Mobile Menu -->
-            <div id="mobile-menu" class="hidden md:hidden mt-4">
-                <nav class="flex flex-col space-y-2">
-                    <a href="{{ route('home') }}" class="nav-link {{ request()->routeIs('home') ? 'active' : '' }}">Home</a>
-                    <a href="{{ route('shop') }}" class="nav-link {{ request()->routeIs('shop') ? 'active' : '' }}">Shop</a>
-                    
-                    @auth
-                        <a href="{{ route('dashboard') }}" class="nav-link {{ request()->routeIs('dashboard') ? 'active' : '' }}">Dashboard</a>
-                        <form method="POST" action="{{ route('logout') }}">
-                            @csrf
-                            <button type="submit" class="nav-link w-full text-left">Logout</button>
-                        </form>
-                    @else
-                        <a href="{{ route('login') }}" class="nav-link {{ request()->routeIs('login') ? 'active' : '' }}">Login</a>
-                        <a href="{{ route('register') }}" class="nav-link {{ request()->routeIs('register') ? 'active' : '' }}">Register</a>
+                        <a href="{{ route('register') }}" class="btn-primary" style="margin-left: 0.5rem;">Register</a>
                     @endauth
                 </nav>
             </div>
@@ -412,47 +674,71 @@
 
     <!-- Footer -->
     <footer class="footer">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
-                <div>
-                    <h3 class="text-xl font-bold mb-4">About Us</h3>
-                    <p class="text-gray-400">Your premier destination for quality books. We offer a wide selection of titles across all genres.</p>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Quick Links</h3>
-                    <ul class="space-y-2">
-                        <li><a href="{{ route('home') }}" class="text-gray-400 hover:text-orange-500 transition-colors">Home</a></li>
-                        <li><a href="{{ route('shop') }}" class="text-gray-400 hover:text-orange-500 transition-colors">Shop</a></li>
-                        @auth
-                            <li><a href="{{ route('dashboard') }}" class="text-gray-400 hover:text-orange-500 transition-colors">Dashboard</a></li>
-                        @endauth
-                    </ul>
-                </div>
-                
-                <div>
-                    <h3 class="text-xl font-bold mb-4">Contact Info</h3>
-                    <ul class="space-y-2 text-gray-400">
-                        <li>📧 info@bookstore.com</li>
-                        <li>📞 +1 (555) 123-4567</li>
-                        <li>📍 123 Book Street, Reading City</li>
-                    </ul>
+        <div class="footer-main">
+            <div class="med-container mx-auto px-4">
+                <div class="footer-grid">
+                    
+                    <!-- About -->
+                    <div>
+                        <h3 class="footer-title">Bookstore</h3>
+                        <p class="footer-text">
+                            Your destination for discovering great books. We offer a curated selection of titles across all genres.
+                        </p>
+                    </div>
+
+                    <!-- Quick Links -->
+                    <div>
+                        <h4 class="footer-title" style="font-size: 1rem;">Quick Links</h4>
+                        <ul class="footer-list">
+                            <li><a href="{{ route('home') }}" class="footer-link">Home</a></li>
+                            <li><a href="{{ route('shop') }}" class="footer-link">Shop</a></li>
+                            <li><a href="{{ route('cart.index') }}" class="footer-link">Cart</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Customer Service -->
+                    <div>
+                        <h4 class="footer-title" style="font-size: 1rem;">Customer Service</h4>
+                        <ul class="footer-list">
+                            <li><a href="#" class="footer-link">Contact Us</a></li>
+                            <li><a href="#" class="footer-link">Shipping Info</a></li>
+                            <li><a href="#" class="footer-link">Returns</a></li>
+                            <li><a href="#" class="footer-link">FAQ</a></li>
+                        </ul>
+                    </div>
+
+                    <!-- Contact -->
+                    <div>
+                        <h4 class="footer-title" style="font-size: 1rem;">Contact</h4>
+                        <ul class="footer-list">
+                            <li class="footer-text" style="margin-bottom: 0.5rem;">info@hardcover.com</li>
+                            <li class="footer-text" style="margin-bottom: 0.5rem;">+1 (555) 123-4567</li>
+                            <li class="footer-text">
+                                123 Book Street<br>
+                                Reading City, RC 12345
+                            </li>
+                        </ul>
+                    </div>
                 </div>
             </div>
-            
-            <div class="border-t border-gray-800 pt-8 text-center text-gray-400">
-                <p>&copy; {{ date('Y') }} {{ config('app.name', 'Bookstore') }}. All rights reserved.</p>
+        </div>
+
+        <!-- Orange Subfooter -->
+        <div class="subfooter">
+            <div class="med-container mx-auto px-4">
+                <div class="subfooter-content">
+                    <div>
+                        <p>&copy; {{ date('Y') }} {{ config('app.name', 'Bookstore') }}. All rights reserved.</p>
+                    </div>
+                    <div class="subfooter-links">
+                        <a href="#" class="subfooter-link">Privacy Policy</a>
+                        <a href="#" class="subfooter-link">Terms of Service</a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
-    <script>
-        function toggleMobileMenu() {
-            const menu = document.getElementById('mobile-menu');
-            menu.classList.toggle('hidden');
-        }
-    </script>
-    
     @stack('scripts')
 </body>
 </html>

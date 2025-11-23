@@ -75,12 +75,12 @@
 <div class="container mx-auto px-4 py-8">
     
     <!-- Breadcrumbs -->
-    <nav class="mb-6 text-sm">
-        <a href="{{ route('home') }}" class="text-gray-600 hover:text-orange-500">Home</a>
-        <span class="mx-2">→</span>
-        <a href="{{ route('shop') }}" class="text-gray-600 hover:text-orange-500">Shop</a>
-        <span class="mx-2">→</span>
-        <span class="text-gray-900 font-semibold">{{ $book->title }}</span>
+    <nav class="mb-6" style="font-size:0.875rem;color:#6b7280;">
+        <a href="{{ route('home') }}" style="color:#6b7280;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#6b7280'">Home</a>
+        <span style="margin:0 0.5rem;">→</span>
+        <a href="{{ route('shop') }}" style="color:#6b7280;text-decoration:none;transition:color 0.3s;" onmouseover="this.style.color='#f97316'" onmouseout="this.style.color='#6b7280'">Shop</a>
+        <span style="margin:0 0.5rem;">→</span>
+        <span style="color:#111827;font-weight:600;">{{ $book->title }}</span>
     </nav>
 
     <!-- Main Grid: 50/50 Split -->
@@ -92,7 +92,7 @@
             <img src="{{ asset('storage/' . $book->cover_image) }}" alt="{{ $book->title }}">
             @else
             <div style="width:100%;height:600px;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #f97316 0%, #ec4899 100%);border-radius:0.5rem;box-shadow:0 20px 50px rgba(0,0,0,0.2);">
-                <span style="font-size:8rem;color:white;">📖</span>
+                <span style="font-size:6rem;color:white;font-weight:700;">BOOK</span>
             </div>
             @endif
         </div>
@@ -101,7 +101,7 @@
         <div class="book-text-column">
             
             <!-- Title -->
-            <h1 style="font-size:2.5rem;font-weight:bold;margin-bottom:1rem;line-height:1.2;">{{ $book->title }}</h1>
+            <h1 style="font-size:2.5rem;font-weight:700;margin-bottom:1rem;line-height:1.2;color:#111827;">{{ $book->title }}</h1>
             
             <!-- Author -->
             <div style="margin-bottom:1.5rem;">
@@ -117,7 +117,7 @@
 
             <!-- Price -->
             <div style="margin-bottom:1.5rem;">
-                <div style="font-size:3rem;font-weight:bold;color:#f97316;">${{ number_format($book->price, 2) }}</div>
+                <div style="font-size:3rem;font-weight:700;color:#f97316;">${{ number_format($book->price, 2) }}</div>
             </div>
 
             <!-- Stock Status -->
@@ -147,10 +147,10 @@
                     <div style="flex-shrink:0;">
                         <label for="quantity" style="display:block;font-weight:600;margin-bottom:0.5rem;font-size:0.875rem;">Quantity</label>
                         <input type="number" id="quantity" name="quantity" value="1" min="1" max="{{ $book->stock }}" 
-                               style="width:80px;padding:0.75rem 1rem;border:1px solid #d1d5db;border-radius:0.5rem;text-align:center;font-size:1.125rem;">
+                               style="width:80px;padding:0.75rem 1rem;border:2px solid #d1d5db;border-radius:0.5rem;text-align:center;font-size:1.125rem;">
                     </div>
                     <button type="submit" class="btn-primary" style="flex-grow:1;padding:0.75rem 2rem;font-size:1.125rem;">
-                        🛒 Add to Cart
+                        Add to Cart
                     </button>
                 </div>
             </form>
@@ -160,12 +160,12 @@
                 @csrf
                 <input type="hidden" name="quantity" value="1">
                 <input type="hidden" name="buy_now" value="1">
-                <button type="submit" style="width:100%;background:#ec4899;color:white;font-weight:bold;padding:0.75rem 2rem;border-radius:0.5rem;font-size:1.125rem;border:none;cursor:pointer;transition:background 0.3s;" onmouseover="this.style.background='#db2777'" onmouseout="this.style.background='#ec4899'">
-                    ⚡ Buy Now
+                <button type="submit" style="width:100%;background:#ec4899;color:white;font-weight:700;padding:0.75rem 2rem;border-radius:0.5rem;font-size:1.125rem;border:none;cursor:pointer;transition:background 0.3s;" onmouseover="this.style.background='#db2777'" onmouseout="this.style.background='#ec4899'">
+                    Buy Now
                 </button>
             </form>
             @else
-            <button style="width:100%;background:#d1d5db;color:#6b7280;font-weight:bold;padding:1rem 2rem;border-radius:0.5rem;font-size:1.125rem;cursor:not-allowed;margin-bottom:2rem;border:none;" disabled>
+            <button style="width:100%;background:#d1d5db;color:#6b7280;font-weight:700;padding:1rem 2rem;border-radius:0.5rem;font-size:1.125rem;cursor:not-allowed;margin-bottom:2rem;border:none;" disabled>
                 Out of Stock
             </button>
             @endif
@@ -175,7 +175,7 @@
 
             <!-- Book Details -->
             <div style="margin-bottom:1.5rem;">
-                <h2 style="font-size:1.25rem;font-weight:bold;margin-bottom:1rem;">Book Details</h2>
+                <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:1rem;color:#111827;">Book Details</h2>
                 <div style="background:#f9fafb;border-radius:0.5rem;padding:1rem;">
                     @if($book->isbn)
                     <div style="display:flex;justify-content:space-between;border-bottom:1px solid #e5e7eb;padding-bottom:0.75rem;margin-bottom:0.75rem;">
@@ -210,7 +210,7 @@
             <!-- Description -->
             @if($book->description)
             <div style="margin-bottom:1.5rem;">
-                <h2 style="font-size:1.25rem;font-weight:bold;margin-bottom:0.75rem;">Description</h2>
+                <h2 style="font-size:1.25rem;font-weight:700;margin-bottom:0.75rem;color:#111827;">Description</h2>
                 <div style="color:#374151;line-height:1.75;background:#f9fafb;border-radius:0.5rem;padding:1rem;">
                     {{ $book->description }}
                 </div>
@@ -222,7 +222,9 @@
 
     <!-- Related Books Section -->
     <div style="margin-top:4rem;border-top:1px solid #e5e7eb;padding-top:3rem;">
-        <h2 style="font-size:2rem;font-weight:bold;margin-bottom:2rem;">More from {{ $book->category->name }}</h2>
+        <div class="title-container">
+            <h2 class="section-title">More from {{ $book->category->name }}</h2>
+        </div>
         
         @php
         $relatedBooks = \App\Models\Book::where('category_id', $book->category_id)
@@ -236,20 +238,20 @@
         <div class="related-books-grid">
             @foreach($relatedBooks as $relatedBook)
             <div class="related-book-card">
-                <a href="{{ route('book.show', $relatedBook->slug) }}">
+                <a href="{{ route('book.show', $relatedBook->slug) }}" style="text-decoration:none;">
                     <div class="related-book-cover">
                         @if($relatedBook->cover_image)
                         <img src="{{ asset('storage/' . $relatedBook->cover_image) }}" alt="{{ $relatedBook->title }}">
                         @else
                         <div style="width:100%;height:100%;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%);">
-                            <span style="font-size:2.5rem;color:white;">📖</span>
+                            <span style="font-size:2rem;color:white;font-weight:700;">BOOK</span>
                         </div>
                         @endif
                     </div>
                     <div style="padding:0.75rem;">
-                        <h3 style="font-weight:bold;font-size:0.75rem;margin-bottom:0.25rem;height:2rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;">{{ $relatedBook->title }}</h3>
+                        <h3 style="font-weight:700;font-size:0.75rem;margin-bottom:0.25rem;height:2rem;overflow:hidden;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;color:#111827;">{{ $relatedBook->title }}</h3>
                         <p style="font-size:0.75rem;color:#6b7280;margin-bottom:0.25rem;">{{ $relatedBook->author->name }}</p>
-                        <p style="font-size:1.125rem;font-weight:bold;color:#f97316;">${{ number_format($relatedBook->price, 2) }}</p>
+                        <p style="font-size:1.125rem;font-weight:700;color:#f97316;">${{ number_format($relatedBook->price, 2) }}</p>
                     </div>
                 </a>
             </div>
