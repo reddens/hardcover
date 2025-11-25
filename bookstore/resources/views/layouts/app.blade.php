@@ -278,6 +278,8 @@
 
         .px-3rem{padding-top:3rem;padding-bottom:3rem;}
 
+        .pt-3rem{padding-top:3rem;}
+
         .featured-books {
             margin-top: 2.5rem;
             margin-bottom: 3rem;
@@ -499,7 +501,7 @@
         
         /* Footer Styles */
         .footer {
-            background-color: #1f2937;
+            background-color: var(--black);
             color: white;
         }
         

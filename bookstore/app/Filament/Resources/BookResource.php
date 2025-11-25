@@ -96,6 +96,7 @@ class BookResource extends Resource
                     ->schema([
                         Forms\Components\FileUpload::make('cover_image')
                             ->image()
+			    ->disk('public')
                             ->directory('books')
                             ->imageEditor()
                             ->columnSpanFull(),

@@ -53,7 +53,7 @@
     
     <!-- Featured Books Section -->
     @if($featuredBooks->count() > 0)
-    <section class="mb-12 bg-white px-3rem">
+    <section class="mb-12 bg-white pt-3rem">
         <div class="title-container">
         <h2 class="section-title mb-8">Featured Books</h2>
         </div>
